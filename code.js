@@ -1,3 +1,5 @@
+// this script needs to be copy pasted in the browser's console while logged in
+
 // this whole script is taken from https://stackoverflow.com/a/74133719 and adapted
 const username = "USER_NAME_HERE";
 
