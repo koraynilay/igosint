@@ -15,8 +15,21 @@ if(categories.length == 0) {
 }
 
 for(c of categories) {
-	user1[c] = require(`${process.cwd()}/${user1.name}_${c}.json`)
-	user2[c] = require(`${process.cwd()}/${user2.name}_${c}.json`)
+	user1filename = `${process.cwd()}/${user1.name}_${c}.json`
+	user2filename = `${process.cwd()}/${user2.name}_${c}.json`
+
+	try {
+		user1[c] = require(user1filename)
+	} catch(e) {
+		console.error(`Error loading ${user1filename}`, e.message)
+		process.exit(1)
+	}
+	try {
+		user2[c] = require(user2filename)
+	} catch(e) {
+		console.error(`Error loading ${user2filename}:`, e.message)
+		process.exit(1)
+	}
 
 	// get common object elements
 	common = user1[c].filter(e => user2[c].some(v => v.username == e.username))
